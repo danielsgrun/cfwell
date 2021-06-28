@@ -1,6 +1,6 @@
-import representations as rp
-import hamiltonian as ht
-import dynamics as dn
+import cfwell.representations as rp
+import cfwell.hamiltonian as ht
+import cfwell.dynamics as dn
 
 from math import pi, sqrt
 from numpy import linspace
