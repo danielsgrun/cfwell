@@ -1,4 +1,5 @@
 from numpy import zeros
+import numpy as np
 
 def make_Ni(natom):
   '''
@@ -117,7 +118,7 @@ def make_state(coefs, kets):
   natom = sum(kets[0,:])
   dim = int((natom+3)*(natom+2)*(natom+1)/6)
  
-  comp_check = any(type(coefs[i]) == complex for i in range(len(coefs)))
+  comp_check = any(type(coefs[i]) == np.complex128 for i in range(len(coefs)))
   num_check = any(sum(kets[i]) != natom for i in range(len(kets)))
 
   if comp_check == True:
