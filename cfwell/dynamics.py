@@ -1,4 +1,5 @@
-from numpy import zeros, dot, conj, array,exp, diag
+from numpy import zeros, dot, conj, array,exp, diag, where
+from math import sqrt
 from tqdm import tqdm
 
 def time_evol(psi0, H, time):
@@ -120,14 +121,14 @@ def meas(vec, N, i):
 
   dimens = len(vec)
   coef03 = 0.
-  psi03 = np.zeros((dimens), dtype=complex)
+  psi03 = zeros((dimens), dtype=complex)
 
-  for j in np.where(abs(N)==i)[0] 
-    coef03 += np.abs(vec[j])**2
+  for j in where(diag(N)==i)[0]: 
+    coef03 += abs(vec[j])**2
     psi03[j] = vec[j]
 
   if coef03 != 0:
-    psi03 = psi03 / np.sqrt(coef03)
+    psi03 = psi03 / sqrt(coef03)
 
-  return [np.array([coef03]),
-          np.array([psi03])]  
+  return [array([coef03]),
+          array([psi03])]  
