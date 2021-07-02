@@ -1,4 +1,4 @@
-from numpy import zeros, dot, conj, array,exp
+from numpy import zeros, dot, conj, array,exp, diag
 from tqdm import tqdm
 
 def time_evol(psi0, H, time):
@@ -116,3 +116,18 @@ def quantum_dyn(Ni, time, psit, natom, square=False, plot=True):
   return array([n1t, n2t, n3t, n4t])
 
 
+def meas(vec, N, i):
+
+  dimens = len(vec)
+  coef03 = 0.
+  psi03 = np.zeros((dimens), dtype=complex)
+
+  for j in np.where(abs(N)==i)[0] 
+    coef03 += np.abs(vec[j])**2
+    psi03[j] = vec[j]
+
+  if coef03 != 0:
+    psi03 = psi03 / np.sqrt(coef03)
+
+  return [np.array([coef03]),
+          np.array([psi03])]  
