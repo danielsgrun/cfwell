@@ -115,7 +115,7 @@ def make_state(coefs, kets):
 
   from sys import exit
 
-  natom = sum(kets[0,:])
+  natom = sum(kets[0])
   dim = int((natom+3)*(natom+2)*(natom+1)/6)
  
   comp_check = any(type(coefs[i]) == np.complex128 for i in range(len(coefs)))
