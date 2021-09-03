@@ -2,10 +2,9 @@ from numpy import zeros, dot, conj, array,exp, diag, where
 from math import sqrt
 from tqdm import tqdm
 
-def time_evol(psi0, H, time):
+def time_evol(psi0, H, time, verbose=False):
   '''
     
-
     Parameters
     ----------
     psi0 : np.array
@@ -14,11 +13,12 @@ def time_evol(psi0, H, time):
         Representation of >complete< hamiltonian.
     nt : np.array
         Array containing all time points.
-
+    verbose: bool, optional
+        Choose whether to print the time left for calculation.
+        Default is False.
     Returns
     -------
        psit
-
     '''  
  
   from scipy.linalg import eigh
@@ -29,11 +29,17 @@ def time_evol(psi0, H, time):
   psit = zeros((nt, dim), dtype=complex)
   
   evl, evc = eigh(H)
-                 
-  for t in tqdm(range(0,len(time))):
-    psit[t,:] = sum(dot(conj(evc[:,i]), psi0)*exp(-1j*evl[i]*(time[t]))*evc[:,i]
-                    for i in range(0,dim))  
   
+  if verbose==True:
+    for t in tqdm(range(0,len(time))):
+      psit[t,:] = sum(dot(conj(evc[:,i]), psi0)*exp(-1j*evl[i]*(time[t]))*evc[:,i]
+                      for i in range(0,dim))  
+
+  else:
+    for t in range(0,len(time)):
+      psit[t,:] = sum(dot(conj(evc[:,i]), psi0)*exp(-1j*evl[i]*(time[t]))*evc[:,i]
+                      for i in range(0,dim))  
+    
   return psit
 
 
@@ -42,7 +48,6 @@ def time_evol(psi0, H, time):
 def quantum_dyn(Ni, time, psit, natom, square=False, plot=True): 
   '''
     
-
     Parameters
     ----------
     Ni : np.array
@@ -59,11 +64,9 @@ def quantum_dyn(Ni, time, psit, natom, square=False, plot=True):
         Decides between <n(t)> and <n²(t)>. The default is False.    
     plot : bool, optional
         Decides whether to plot or not. The default is True.
-
     Returns
     -------
     np.array([n1t, n2t, n3t, n4t])
-
     '''  
       
   nb = natom
