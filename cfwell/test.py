@@ -63,7 +63,7 @@ NOON = rp.make_state(coefs, kets)
 
 fids = abs(array([dot(conj(NOON), psit[i,:]) for i in range(len(time))]))
 
-# %% Energy bands 
+#%% Energy bands 
 
 H_struc = [Hint, Htun, Hb13, Hb24] # hamiltonian matrix structures
 ujlist, bvals = ht.bands(H_struc,
