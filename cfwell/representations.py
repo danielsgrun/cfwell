@@ -4,18 +4,15 @@ import numpy as np
 def make_Ni(natom):
   '''
     
-
     Parameters
     ----------
     natom : int
         Total # of atoms.
-
     Returns
     -------
     np.array
         Array containing the representations of Ni operators.
         "np.array([N1, N2, N3, N4])."
-
     ''' 
     
   
@@ -56,18 +53,15 @@ def make_Ni(natom):
 def representation(ket0):
   '''
     
-
     Parameters
     ----------
     ket0 : list/np.array
         Ket |N1, N2, N3, N4> as:
             "[N1, N2, N3, N4]".
-
     Returns
     -------
     psi : np.array
         Vector representation of the quantum state.
-
     '''  
         
 
@@ -96,20 +90,17 @@ def representation(ket0):
 def make_state(coefs, kets):
   '''
     
-
     Parameters
     ----------
     coefs : list/np.array
         [c1, c2, ...].
     kets : np.array
         [|Ket1>, |Ket2>, ...].
-
     Returns
     -------
     psis : np.array
         Representation of state:
             "c1|Ket1> + c2|Ket2> + ...".
-
     '''  
 
 
