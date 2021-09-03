@@ -75,7 +75,6 @@ def make_h(params, natom):
 def bands(H_struc, params, natom, plot=True, num=500):
   '''
     
-
     Parameters
     ----------
     H_struc : numpy.array
@@ -91,11 +90,9 @@ def bands(H_struc, params, natom, plot=True, num=500):
         Decide whether to plot or not. The default is True.
     num : int, optional
         # of plotting points. The default is 500.
-
     Returns
     -------
     np.array([U/J, bvals]).
-
     '''    
   
   from numpy import linspace, shape, array
